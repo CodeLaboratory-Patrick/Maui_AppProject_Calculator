@@ -12,34 +12,34 @@ namespace MAUICalculator.MVVM.ViewModels
     [AddINotifyPropertyChangedInterface]
     public class CalculatorViewModel
     {
-        public string Formular { get; set; }
+        public string Formula { get; set; }
 
         public string Result { get; set; } = "0";
 
-        public ICommand OperationCommand => new Command((number) => { Formular += number; });
+        public ICommand OperationCommand => new Command((number) => { Formula += number; });
 
         public ICommand ResetCommand =>
             new Command(() =>
             {
                 Result = "0";
-                Formular = "";
+                Formula = "";
             });
 
         public ICommand BackspaceCommand =>
             new Command(() =>
             {
-                if (Formular.Length > 0)
+                if (Formula.Length > 0)
                 {
-                    Formular = Formular.Substring(0, Formular.Length - 1);
+                    Formula = Formula.Substring(0, Formula.Length - 1);
                 }
             });
 
         public ICommand CalculateCommand =>
             new Command(() =>
             {
-                if (Formular.Length == 0)
+                if (Formula.Length == 0)
                     return;
-                var calculation = Calculator.Calculate(Formular);
+                var calculation = Calculator.Calculate(Formula);
                 Result = calculation.Result.ToString();
             });
     }
