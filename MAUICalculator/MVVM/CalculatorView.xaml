@@ -6,7 +6,7 @@
     
     <Grid RowDefinitions=".4*, .6*">
         <VerticalStackLayout>
-            <Label Text="{Binding Formula" StyleClass="LabelText, LabelOperations"/>
+            <Label Text="{Binding Formula}" StyleClass="LabelText, LabelOperations"/>
             <Label Text="{Binding Result}" StyleClass="LabelText, LabelResult"/>
         </VerticalStackLayout>
         <Grid Grid.Row="1">

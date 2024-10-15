@@ -1,4 +1,5 @@
-﻿using PropertyChanged;
+﻿using Dangl.Calculator;
+using PropertyChanged;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,15 @@ namespace MAUICalculator.MVVM.ViewModels
                 {
                     Formular = Formular.Substring(0, Formular.Length - 1);
                 }
+            });
+
+        public ICommand CalculateCommand =>
+            new Command(() =>
+            {
+                if (Formular.Length == 0)
+                    return;
+                var calculation = Calculator.Calculate(Formular);
+                Result = calculation.Result.ToString();
             });
     }
 }
