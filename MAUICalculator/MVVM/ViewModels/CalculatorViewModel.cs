@@ -16,5 +16,21 @@ namespace MAUICalculator.MVVM.ViewModels
         public string Result { get; set; } = "0";
 
         public ICommand OperationCommand => new Command((number) => { Formular += number; });
+
+        public ICommand ResetCommand =>
+            new Command(() =>
+            {
+                Result = "0";
+                Formular = "";
+            });
+
+        public ICommand BackspaceCommand =>
+            new Command(() =>
+            {
+                if (Formular.Length > 0)
+                {
+                    Formular = Formular.Substring(0, Formular.Length - 1);
+                }
+            });
     }
 }
