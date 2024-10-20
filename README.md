@@ -23,6 +23,37 @@ This documentation provides an in-depth analysis of the **Calculator Application
 ## Files Breakdown
 
 ### 1. CalculatorView.xaml
+**Purpose**:
+The `CalculatorView.xaml` file defines the layout and elements of the calculator's user interface. It includes controls such as **Buttons**, **Labels**, and **Grid** to represent the different calculator operations and input areas.
+
+**Key Components**:
+- **Grid Layout**: The `Grid` control is used to organize buttons (numbers and operations) in a structured format, making it easy for users to interact with the calculator.
+- **Buttons**: Each button is defined to represent numbers (0-9) or operations (+, -, *, /).
+- **Labels**: Used to display the current input, the result, and any operations being performed.
+
+**Detailed Explanation**:
+- **Grid Layout**: The `Grid` is used to arrange the calculator buttons in rows and columns, allowing for a consistent layout. This ensures that the buttons are easy to access, making the user experience more intuitive.
+  - **RowDefinitions and ColumnDefinitions**: These properties are used to define the structure of the grid, determining how many rows and columns are available and their respective sizes.
+- **Buttons**: Each button is placed in the grid with specific properties, such as `Grid.Row` and `Grid.Column`, to ensure it appears in the correct location. The buttons are also bound to commands from the `CalculatorViewModel` to enable the interaction logic.
+  - **Text Property**: This specifies the text displayed on each button, such as numbers or operations.
+  - **Command and CommandParameter**: Each button uses the `Command` property to bind to an appropriate command in the ViewModel and `CommandParameter` to pass specific data, such as the number or operation, to the command.
+- **Labels**: The `Label` is used to show the user what they are inputting and the result of their calculations. The `Text` property of the label is bound to properties in the ViewModel, ensuring that updates to the calculation are reflected in real time.
+
+**Example Structure**:
+```xml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YourNamespace.CalculatorView">
+    <Grid Padding="20" RowDefinitions="*, *, *, *" ColumnDefinitions="*, *, *, *">
+        <Label x:Name="DisplayLabel" Grid.ColumnSpan="4" FontSize="30" VerticalOptions="Center" HorizontalOptions="End" />
+        <Button Text="1" Grid.Row="1" Grid.Column="0" Command="{Binding NumberCommand}" CommandParameter="1" />
+        <Button Text="+" Grid.Row="1" Grid.Column="3" Command="{Binding OperationCommand}" CommandParameter="+" />
+        <!-- More buttons here -->
+    </Grid>
+</ContentPage>
+```
+- **Grid Layout**: The buttons are arranged in a grid to ensure easy access and intuitive operation.
+- **Command Binding**: Buttons use `Command` bindings to interact with the `ViewModel`, following the MVVM pattern.
 
 ### 2. CalculatorView.xaml.cs
 
